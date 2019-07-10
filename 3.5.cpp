@@ -1,0 +1,80 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+//数组和vector都是存放相同类型元素的容器,或者说,数据结构
+//我们有指针数组,有string数组,有对象数组,是不是有的地方不能用string或者vector来
+//有没有指针vector,对象vector;按说好像也可以的;
+//const 和constexpr有什么区别,在这里似乎是一样的
+/*
+unsigned cnt = 42;
+const unsigned sz = 42;
+int arr[10];
+int* parr[sz];
+string bad[cnt];
+string* strs[sz];
+string strs[get_size()];
+*/
+//数组,是一个类似于vector的东西.
+//练习3.31
+//这是一个错误的写法,索引i达到了10,而这个上限应当是0-9;
+/*void f1() {
+	int a[11];
+	for (auto i : a) {
+		a[i] = i;
+	}
+	cout << a[11] << endl;//
+}*/
+
+void f2() {
+	int a[10];
+	for (int i = 0; i < 10; ++i) {
+		a[i]=i;
+	}
+	cout << a[10] << endl;
+}//输出结果却是-858993460
+
+
+//数组拷贝
+void f3() {
+	int a[10];
+	for (int i = 0; i < 10; ++i) {
+		a[i] = i;
+		cout << i;
+	}
+	int b[10];
+	for (int i = 0; i < 10; i++) {
+		b[i] = a[i];
+	}
+}
+
+
+void f4() {
+	vector<int> v;
+	for (int i = 0; i < 10; i++) {
+		v.push_back(i);
+	}
+}
+
+//论几种初始化vector的方式
+void f5() {
+	vector<int> v2;
+	for (int i = 0; i < 10; ++i) {
+		int m2;
+		cin >> m2;
+		v2.push_back(m2);
+	}
+
+	vector<int> v3;
+	int m3;
+	while (cin >> m3) {
+		v3.push_back(m3);
+	}
+}
+
+int main() {
+	f3();
+	
+
+	return 0;
+}
